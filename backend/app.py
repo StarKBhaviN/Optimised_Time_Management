@@ -1,13 +1,15 @@
 from flask import Flask
 from config.database_connection import MongoDB
 from routes.user_routes import user_create_bp,user_login_bp
-from routes.task_routes import task_add_bp
+from routes.task_routes import task_add_bp,task_delete_bp,get_tasks_bp
 from flask_jwt_extended import JWTManager
+import datetime
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/Opt_Time_Management"
 
-app.config['JWT_SECRET_KEY'] = 'bha$vi!n'  # Change this to a secure random key in production
+app.config['JWT_SECRET_KEY'] = 'bha$vi!n'
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = datetime.timedelta(days=1)
 jwt = JWTManager(app)
 
 # Initialize MongoDB client
@@ -20,6 +22,8 @@ app.register_blueprint(user_login_bp)
 
 # Routes registration TASKS
 app.register_blueprint(task_add_bp)
+app.register_blueprint(get_tasks_bp)
+app.register_blueprint(task_delete_bp)
 
 @app.route('/')
 def index():

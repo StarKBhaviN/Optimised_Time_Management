@@ -90,7 +90,8 @@ def login():
             return jsonify({"error" : "Incorrect Login credentials."}), 401
 
         # Generate access token for the user
-        access_token = create_access_token(identity=user_data["Email"])
+        print("User : ",existing_user["_id"])
+        access_token = create_access_token(identity=existing_user["_id"])
 
         return jsonify({"message": "User logged in successfully", "access_token": access_token}), 200
     except Exception as e:
