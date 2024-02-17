@@ -8,7 +8,4 @@ frontend/node_modules/
 .env
 
 # Ignore py_cache files
-backend/__pycache__
-backend/config/__pycache__
-backend/mdoels/__pycache__
-backend/routes/__pycache__
+__pycache__/
