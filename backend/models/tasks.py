@@ -8,12 +8,12 @@ class Tasks:
         self.urgency = urgency
         self.importance = importance
 
-    def add_task(self, db, token):
+    def add_task(self, db, user_id):
 
         task_collection = db["Tasks"]
 
         task_collection.insert_one({
-            "User_ID": token["_id"],
+            "User_ID": user_id,
             "Created_At": datetime.now(),
             "Title": self.title,
             "Due_date": self.due_date,

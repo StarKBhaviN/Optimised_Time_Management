@@ -20,7 +20,6 @@ app.register_blueprint(user_login_bp)
 
 # Routes registration TASKS
 app.register_blueprint(task_add_bp)
-# app.register_blueprint(user_login_bp)
 
 @app.route('/')
 def index():
