@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Login from './Components/Login';
 
 function App() {
   const [data, setData] = useState(null)
@@ -13,11 +14,7 @@ function App() {
   
   return (
     <div className="App">
-      <div>
-        <h1>Backend Data:</h1>
-        {data ? <p>{data}</p> : <p>Loading...</p>}
-        sksfnksan
-      </div>
+      <Login />
     </div>
   );
 }
