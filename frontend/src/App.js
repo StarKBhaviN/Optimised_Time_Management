@@ -1,7 +1,9 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import Login from './Components/Login';
+import Home from './Components/Home'
 
 function App() {
   const [data, setData] = useState(null)
@@ -13,9 +15,14 @@ function App() {
   }, []);
   
   return (
-    <div className="App">
-      <Login />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route exact path="/" Component={Home} />
+          <Route path="/login" Component={Login} />
+        </Routes>        
+      </div>
+    </Router>
   );
 }
 
