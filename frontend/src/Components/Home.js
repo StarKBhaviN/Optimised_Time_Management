@@ -1,10 +1,17 @@
 import React from 'react'
+import Navbar from './Navbar'
+import Intro from './Intro'
+import About from './About'
+import Clock from './Clock'
 
 function Home() {
   return (
-    <div>
-      This is home
-    </div>
+    <>
+      <Navbar />
+      <Intro />
+      <About />
+      <Clock />
+    </>
   )
 }
 
