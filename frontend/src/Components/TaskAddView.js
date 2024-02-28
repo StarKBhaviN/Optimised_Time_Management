@@ -1,35 +1,26 @@
 import React, { useState, useEffect } from "react";
-import Button from "react-bootstrap/Button";
 import "../Styles/taskAddViewOuter.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
 
 function TaskAddView() {
   const [tokenFound, setTokenFound] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
 
   useEffect(() => {
     // Check if token is found (You need to implement your token checking logic here)
-    const token = localStorage.getItem("token"); // Example: Check if token exists in localStorage
+    const token = localStorage.getItem("OTM_Token"); // Example: Check if token exists in localStorage
     setTokenFound(!!token); // Set tokenFound based on whether token exists or not
   }, []);
 
-  const handleAddTaskClick = () => {
-    console.log("Button clicked")
-    setShowModal(true); // Show the modal when "Add Task" button is clicked
-  };
-
-  // <script>
-  //   $("#exampleModal").on("show.bs.modal", function (event) {
-  //     var button = $(event.relatedTarget); // Button that triggered the modal
-  //     var recipient = button.data("whatever"); // Extract info from data-* attributes
-  //     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  //     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  //     var modal = $(this);
-  //     modal.find(".modal-title").text("New message to " + recipient);
-  //     modal.find(".modal-body input").val(recipient);
-  //   });
-  // </script>
+  console.log(tokenFound)
 
   return (
     <>
@@ -47,7 +38,8 @@ function TaskAddView() {
             }}
           >
             <div className="tasks">
-              {tokenFound && <Button variant="primary mb-2">Add Task</Button>}
+
+              {tokenFound && <Button variant="primary" onClick={handleShow}>Add Task</Button>}
               <h5>List View :-</h5>
               <div className="allTasks">
                 <ol className="text-start">
@@ -89,82 +81,57 @@ function TaskAddView() {
             </div>
           </div>
         </div>
-        <Button variant="primary mb-2" onClick={handleAddTaskClick}>
-          Add Task
-        </Button>
-        <div
-          className={`modal fade ${showModal ? "show" : ""}`}
-          id="exampleModal"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">
-                  Add the Task
-                </h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <form>
-                  <div className="task">
-                    <div className="top">
-                      <div className="input">
-                        <label>Title:</label>
-                        <input className="inp" type="text" required />
-                      </div>
-                      <div className="input">
-                        <label>Due_Date: </label>
-                        <input type="date" className="inp" required />
-                      </div>
+
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Add the Task</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <div className="task">
+                <div className="top">
+                  <div className="input">
+                    <label>Title:</label>
+                    <input className="inp" type="text" required />
+                  </div>
+                  <div className="input">
+                    <label>Due_Date: </label>
+                    <input type="date" className="inp" required />
+                  </div>
+                </div>
+
+                <div className="btm">
+                  <div className="inpBox">
+                    <div className="box1">
+                      <label>Urgency: </label>
+                      <input type="checkbox" />
                     </div>
-
-                    <div className="btm">
-                      <div className="inpBox">
-                        <div className="box1">
-                          <label>Urgency: </label>
-                          <input type="checkbox" />
-                        </div>
-                        <div className="box2">
-                          <label>Importance: </label>
-                          <input type="checkbox" />
-                        </div>
-                      </div>
-
-                      <div className="input-desc">
-                        <label>Description: </label>
-                        <input type="text" className="inp" />
-                      </div>
+                    <div className="box2">
+                      <label>Importance: </label>
+                      <input type="checkbox" />
                     </div>
                   </div>
-                </form>
+
+                  <div className="input-desc">
+                    <label>Description: </label>
+                    <input type="text" className="inp" />
+                  </div>
+                </div>
               </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="button" className="btn btn-primary">
-                  Add Task
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal >
       </div>
+
     </>
   );
 }
