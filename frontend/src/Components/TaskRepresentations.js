@@ -1,12 +1,39 @@
-import React from 'react'
+import { React, useEffect, useState } from 'react'
 import "../Styles/TaskRepresentation.css"
 import Table from 'react-bootstrap/Table';
+import axios from 'axios';
 
-function TaskRepresentations() {
+function TaskRepresentations({ a_token, auth_token_id }) {
+    const [tokenFound, setTokenFound] = useState(false);
+    const [taskData, setTaskData] = useState(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem('OTM_Token');
+        setTokenFound(!!token);
+
+        if (token) {
+            const fetchData = async () => {
+                try {
+                    const response = await axios.get("http://127.0.0.1:5000/api/tasks/get_all_tasks", {
+                        headers: {
+                            Authorization: `Bearer ${auth_token_id}`
+                        }
+                    })
+                    setTaskData(response.data);
+                } catch (error) {
+                    console.error('Error fetching task data:', error);
+                }
+            };
+
+            fetchData();
+        }
+    }, [a_token, auth_token_id]);
+
+    console.log(taskData)
     return (
         <>
             <div className="task_main">
-                <h2 className='mb-4' style={{marginTop : "34px"}}>Matrix Representation</h2>
+                <h2 className='mb-4' style={{ marginTop: "34px" }}>Matrix Representation</h2>
 
                 <div className='areaSetter'>
                     <Table bordered >
