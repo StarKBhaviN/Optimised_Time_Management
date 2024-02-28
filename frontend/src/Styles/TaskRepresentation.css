@@ -1,0 +1,17 @@
+.task_main{
+    border: 0cap solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.tblDivs{
+    border: 2px solid green;
+    min-height: 180px;
+}
+
+.areaSetter{
+    width: 80%;
+}

@@ -2,7 +2,8 @@ import React from 'react'
 import Navbar from './Navbar'
 import Intro from './Intro'
 import About from './About'
-import Clock from './Clock'
+import TaskRepresentations from './TaskRepresentations'
+import TaskAddView from './TaskAddView'
 
 function Home() {
   return (
@@ -10,7 +11,8 @@ function Home() {
       <Navbar />
       <Intro />
       <About />
-      <Clock />
+      <TaskAddView />
+      <TaskRepresentations />
     </>
   )
 }

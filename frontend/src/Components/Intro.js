@@ -6,7 +6,7 @@ import Clock from './Clock'
 function Intro() {
     return (
         <>
-            <div className='introOuter'>
+            <div className='introOuter' id='home'>
                 <div className="curveDesign">
                     <div className="content">
                         <h1 className='text-start'>Optimised Time</h1>

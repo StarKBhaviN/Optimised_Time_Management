@@ -15,7 +15,6 @@
     display: flex;
     justify-content: space-between;
 }
-
 .content{
     border: 0px solid red;
     margin-left: 150px;

@@ -1,0 +1,38 @@
+.taskAddViewOuter {
+  border: 0px solid red;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.widthSet {
+  border: 0px solid red;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 48%;
+  padding: 10px;
+  border: 0px solid green;
+  color: white;
+  border-radius: 12px;
+  background-color: rgb(46, 35, 65);
+  box-shadow: 2px 2px 4px rgb(23, 2, 74);
+}
+
+.aboutTask {
+  color: white;
+  border-radius: 12px;
+  background-color: rgb(46, 35, 65);
+  padding: 10px;
+  width: 48%;
+  border: 0px solid purple;
+  box-shadow: 2px 2px 4px rgb(23, 2, 74);
+}

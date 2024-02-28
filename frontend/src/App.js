@@ -5,6 +5,7 @@ import axios from 'axios';
 import Login from './Components/Login';
 import Home from './Components/Home'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Signup from './Components/Signup';
 
 function App() {
   const [data, setData] = useState(null)
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route exact path="/" Component={Home} />
           <Route path="/login" Component={Login} />
+          <Route path="/SignUp" Component={Signup} />
         </Routes>
       </div>
     </Router>
