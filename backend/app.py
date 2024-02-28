@@ -1,11 +1,13 @@
 from flask import Flask
+from flask_cors import CORS
 from config.database_connection import MongoDB
-from routes.user_routes import user_create_bp,user_login_bp
+from routes.user_routes import user_create_bp,user_login_bp,user_info_bp
 from routes.task_routes import task_add_bp,task_delete_bp,get_tasks_bp
 from flask_jwt_extended import JWTManager
 import datetime
 
 app = Flask(__name__)
+CORS(app, origins=["http://localhost:3000"])
 app.config["MONGO_URI"] = "mongodb://localhost:27017/Opt_Time_Management"
 
 app.config['JWT_SECRET_KEY'] = 'bha$vi!n'
@@ -19,6 +21,7 @@ mongodb.init_app(app)
 # Routes registration USER
 app.register_blueprint(user_create_bp)
 app.register_blueprint(user_login_bp)
+app.register_blueprint(user_info_bp)
 
 # Routes registration TASKS
 app.register_blueprint(task_add_bp)

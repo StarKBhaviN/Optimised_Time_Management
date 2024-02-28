@@ -10,7 +10,7 @@
     display: flex;
     justify-content: center; 
     align-items: center;
-    height: 100%;
+    height: 100vh;
     width: 100%;
     background: url("https://getenergyforms.com/wp-content/uploads/2013/11/website-background-free-abstract-1024x640.jpg");
     font-family: "Poppins",sans-serif;
@@ -27,7 +27,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     color: #fff;
     border-radius: 10px;
-    padding: 30px 40px;
+    padding: 30px 40px 10px 40px;
     box-shadow: 2px 2px 4px rgb(47, 219, 219);
 }
 
@@ -44,14 +44,13 @@
     font-weight:500;
     /* border: 2px solid white; */
     padding-left: 25px;
-    padding-bottom: 15px;
 }
 
 .wrapper .input-box {
     position: relative;
     width: 100%;
     height: 50px;
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 .input-box input {
@@ -105,7 +104,7 @@
     align-items: flex-start;
     justify-content: space-between;
     font-size: 14.5px;
-    margin: -15px 0 15px;
+    margin: 0px 0 15px;
     /* border: 2px solid white; */
 }
 

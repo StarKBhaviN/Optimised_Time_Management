@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from models.user import User
 from passlib.hash import sha256_crypt
 from flask_jwt_extended import create_access_token
@@ -94,5 +95,27 @@ def login():
         access_token = create_access_token(identity=existing_user["_id"])
 
         return jsonify({"message": "User logged in successfully", "access_token": access_token}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+user_info_bp = Blueprint('user_info_bp', __name__)
+
+@user_info_bp.route('/api/user/info', methods=["GET"])
+@jwt_required()  # Requires a valid access token
+def get_user_info():
+    try:
+        from config.database_connection import MongoDB
+        user_id = get_jwt_identity()
+
+        mongodb = MongoDB()
+        db = mongodb.get_db("Opt_Time_Management")
+        user = db.Users.find_one({"_id": user_id}, {"password": 0})
+
+        if user:
+            user.pop('password', None)
+            return jsonify(user), 200
+        else:
+            return jsonify({"error": "User not found"}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 500

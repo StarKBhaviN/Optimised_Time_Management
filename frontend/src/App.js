@@ -6,6 +6,8 @@ import Login from './Components/Login';
 import Home from './Components/Home'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Signup from './Components/Signup';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [data, setData] = useState(null)
@@ -24,6 +26,8 @@ function App() {
           <Route path="/login" Component={Login} />
           <Route path="/SignUp" Component={Signup} />
         </Routes>
+
+        <ToastContainer />
       </div>
     </Router>
   );
