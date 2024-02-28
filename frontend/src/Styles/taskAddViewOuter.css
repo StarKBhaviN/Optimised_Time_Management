@@ -38,3 +38,92 @@
   border: 0px solid purple;
   box-shadow: 2px 2px 4px rgb(23, 2, 74);
 }
+
+/* css krupali */
+
+body {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  min-height: 10vh;
+}
+
+.top{
+/* border: 2px solid red; */
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 0 0px 0;
+}
+
+.task{
+/* color: rgb(122, 9, 176); */
+font-size: large;
+}
+
+.task .input{
+position: relative;
+width: 210px;
+display: flex;
+flex-direction: column;
+/* border: 2px solid green; */
+}
+
+.inpBox{
+/* border: 2px solid green; */
+display: flex;
+flex-direction:column;
+width: 210px;
+}
+
+.btm{
+display: flex;
+justify-content: space-between;
+margin: 20px 0;
+/* border: 2px solid red; */
+}
+
+.input-desc{
+/* border: 2px solid green; */
+width: 210px;
+}
+
+.input-desc input{
+border: 1px solid black;
+border-radius: 10px;
+width: 100%;
+height: 50px;
+/* background-color: rgb(206, 179, 241); */
+}
+
+.input label{
+  margin: 0;
+}
+
+.input-desc label{
+  margin: 0;
+}
+
+.top .input input{
+border: 1px solid black;
+border-radius: 10px;
+/* background-color: rgb(206, 179, 241); */
+width: 100%;
+height: 25px;
+}
+
+.box1 input{
+  height: 20px;
+  width: 50px;
+  transform: translate(24px,5px);
+}
+
+.box2 label{
+  padding-top: 10px;
+}
+
+.box2 input{
+  height: 20px;
+  width: 50px;
+  padding-top: 5px;
+  }
