@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  border: 0px solid red;
+  border: 2px solid red;
 }
 
 a{
@@ -22,7 +22,7 @@ a{
   height: 46px;
   width: 450px;
   z-index: 100;
-  border: 0px solid red;
+  border: 2px solid red;
 }
 
 .cmnLink {
