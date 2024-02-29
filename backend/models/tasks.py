@@ -17,6 +17,6 @@ class Tasks:
             "Created_At": datetime.now(),
             "Title": self.title,
             "Due_date": self.due_date,
-            "Urgency": self.urgency,
+            "Urgency": self.urgency ,
             "Importance": self.importance
         })

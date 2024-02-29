@@ -49,6 +49,7 @@ function Signup() {
     }
   })
 
+  console.log(values)
   const errorMessage = Object.values(errors)
 
   const showToastMessage = () => {

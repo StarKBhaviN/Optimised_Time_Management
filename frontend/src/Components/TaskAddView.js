@@ -5,8 +5,23 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import axios from "axios"
+import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
+import { loginSchema } from '../validation_schema';
+import { useNavigate } from "react-router-dom";
 
-function TaskAddView() {
+
+const initialValues = {
+  Title: "",
+  Due_date: "",
+  Urgency: false,
+  Importance: false
+}
+
+function TaskAddView({ auth_token_id }) {
+  const navigate = useNavigate()
+
   const [tokenFound, setTokenFound] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -21,6 +36,37 @@ function TaskAddView() {
   }, []);
 
   console.log(tokenFound)
+
+
+  const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues: initialValues,
+    onSubmit: async (values, action) => {
+      console.log("Submit button clicked")
+      try {
+        const response = await axios.post("http://127.0.0.1:5000/api/tasks/task_add", {
+          Title: values.Title,
+          Due_date: values.Due_date,
+          Urgency: values.Urgency,
+          Importance: values.Importance
+        }, {
+          headers: {
+            Authorization: `Bearer ${auth_token_id}`
+          }
+        });
+
+        console.log(response)
+      } catch (error) {
+        console.error("Error occurred:", error.response.data.error);
+        toast.error(`${error.response.data.error}`, {
+          position: 'bottom-left'
+        });
+      }
+
+      action.resetForm()
+    }
+  })
+
+  console.log(values)
 
   return (
     <>
@@ -87,17 +133,32 @@ function TaskAddView() {
           <Modal.Header closeButton>
             <Modal.Title>Add the Task</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
-            <Form>
+          <Form onSubmit={handleSubmit}>
+            <Modal.Body>
               <div className="task">
                 <div className="top">
                   <div className="input">
                     <label>Title:</label>
-                    <input className="inp" type="text" required />
+                    <input
+                      type="text"
+                      name="Title"
+                      value={values.Title}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+
+                    />
                   </div>
                   <div className="input">
                     <label>Due_Date: </label>
-                    <input type="date" className="inp" required />
+                    <input
+                      type="date"
+                      name="Due_date"
+                      value={values.Due_date}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+
+
+                    />
                   </div>
                 </div>
 
@@ -105,30 +166,46 @@ function TaskAddView() {
                   <div className="inpBox">
                     <div className="box1">
                       <label>Urgency: </label>
-                      <input type="checkbox" />
+                      <input
+                        type="checkbox"
+                        name="Urgency"
+                        value={values.Urgency}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        defaultValue= {false}
+                        />
                     </div>
                     <div className="box2">
                       <label>Importance: </label>
-                      <input type="checkbox" />
+                      <input
+                        type="checkbox"
+                        name="Importance"
+                        value={values.Importance}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        defaultValue= {false}
+                        />
                     </div>
                   </div>
 
                   <div className="input-desc">
                     <label>Description: </label>
-                    <input type="text" className="inp" />
+                    <input
+                      type="text"
+                    />
                   </div>
                 </div>
               </div>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
-            </Button>
-          </Modal.Footer>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <Button variant="primary" type="submit" onClick={handleClose}>
+                Save Changes
+              </Button>
+            </Modal.Footer>
+          </Form>
         </Modal >
       </div>
 
