@@ -21,7 +21,8 @@ def add_task():
             title=task_data["Title"],
             due_date=task_data["Due_date"],
             importance=task_data["Importance"],
-            urgency=task_data["Urgency"]
+            urgency=task_data["Urgency"],
+            description=task_data["Description"]
         )
         print(token)
         task.add_task(db, token) 

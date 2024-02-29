@@ -8,7 +8,6 @@ import Modal from 'react-bootstrap/Modal';
 import axios from "axios"
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
-import { loginSchema } from '../validation_schema';
 import { useNavigate } from "react-router-dom";
 
 
@@ -16,7 +15,8 @@ const initialValues = {
   Title: "",
   Due_date: "",
   Urgency: false,
-  Importance: false
+  Importance: false,
+  Description: ""
 }
 
 function TaskAddView({ auth_token_id }) {
@@ -30,9 +30,8 @@ function TaskAddView({ auth_token_id }) {
 
 
   useEffect(() => {
-    // Check if token is found (You need to implement your token checking logic here)
-    const token = localStorage.getItem("OTM_Token"); // Example: Check if token exists in localStorage
-    setTokenFound(!!token); // Set tokenFound based on whether token exists or not
+    const token = localStorage.getItem("OTM_Token");
+    setTokenFound(!!token);
   }, []);
 
   console.log(tokenFound)
@@ -47,7 +46,8 @@ function TaskAddView({ auth_token_id }) {
           Title: values.Title,
           Due_date: values.Due_date,
           Urgency: values.Urgency,
-          Importance: values.Importance
+          Importance: values.Importance,
+          Description: values.Description
         }, {
           headers: {
             Authorization: `Bearer ${auth_token_id}`
@@ -172,8 +172,8 @@ function TaskAddView({ auth_token_id }) {
                         value={values.Urgency}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        defaultValue= {false}
-                        />
+                        defaultValue={false}
+                      />
                     </div>
                     <div className="box2">
                       <label>Importance: </label>
@@ -183,8 +183,8 @@ function TaskAddView({ auth_token_id }) {
                         value={values.Importance}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        defaultValue= {false}
-                        />
+                        defaultValue={false}
+                      />
                     </div>
                   </div>
 
@@ -192,6 +192,10 @@ function TaskAddView({ auth_token_id }) {
                     <label>Description: </label>
                     <input
                       type="text"
+                      name="Description"
+                      value={values.Description}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                     />
                   </div>
                 </div>
@@ -206,7 +210,7 @@ function TaskAddView({ auth_token_id }) {
               </Button>
             </Modal.Footer>
           </Form>
-        </Modal >
+        </Modal>
       </div>
 
     </>
