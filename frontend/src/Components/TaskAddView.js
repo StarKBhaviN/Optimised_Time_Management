@@ -2,25 +2,24 @@ import React, { useState, useEffect } from "react";
 import "../Styles/taskAddViewOuter.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
-import axios from "axios"
-import { useFormik } from 'formik';
-import { toast } from 'react-toastify';
-import { loginSchema } from '../validation_schema';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+import axios from "axios";
+import { Formik, useFormik } from "formik";
+import { toast } from "react-toastify";
+import { loginSchema } from "../validation_schema";
 import { useNavigate } from "react-router-dom";
-
 
 const initialValues = {
   Title: "",
   Due_date: "",
   Urgency: false,
-  Importance: false
-}
+  Importance: false,
+};
 
 function TaskAddView({ auth_token_id }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [tokenFound, setTokenFound] = useState(false);
   const [show, setShow] = useState(false);
@@ -28,45 +27,74 @@ function TaskAddView({ auth_token_id }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
-  useEffect(() => {
-    // Check if token is found (You need to implement your token checking logic here)
-    const token = localStorage.getItem("OTM_Token"); // Example: Check if token exists in localStorage
-    setTokenFound(!!token); // Set tokenFound based on whether token exists or not
-  }, []);
-
-  console.log(tokenFound)
-
-
+  console.log(tokenFound);
+  // /api/tasks/get_all_tasks
   const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: initialValues,
     onSubmit: async (values, action) => {
-      console.log("Submit button clicked")
       try {
-        const response = await axios.post("http://127.0.0.1:5000/api/tasks/task_add", {
-          Title: values.Title,
-          Due_date: values.Due_date,
-          Urgency: values.Urgency,
-          Importance: values.Importance
-        }, {
-          headers: {
-            Authorization: `Bearer ${auth_token_id}`
+        const response = await axios.post(
+          "http://127.0.0.1:5000/api/tasks/task_add",
+          {
+            Title: values.Title,
+            Due_date: values.Due_date,
+            Urgency: values.Urgency,
+            Importance: values.Importance,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${auth_token_id}`,
+            },
           }
-        });
+        );
 
-        console.log(response)
+        console.log(response);
+        if (response) {
+          toast.success("Task Added Successfully!!!", {
+            position: "bottom-left",
+          });
+        }
       } catch (error) {
         console.error("Error occurred:", error.response.data.error);
         toast.error(`${error.response.data.error}`, {
-          position: 'bottom-left'
+          position: "bottom-left",
         });
       }
 
-      action.resetForm()
-    }
-  })
+      action.resetForm();
+    },
+  });
 
-  console.log(values)
+  const [getData, setDatas] = useState([]);
+
+  const datas = async () => {
+    try {
+      console.log("Running this function");
+      const response = await axios.get(
+        "http://127.0.0.1:5000/api/tasks/get_all_tasks",
+        {
+          headers: {
+            Authorization: `Bearer ${auth_token_id}`,
+          },
+        }
+      );
+
+      console.log(response.data);
+
+      setDatas(response.data);
+    } catch (error) {
+      console.error("Error occurred:", error.response.data.error);
+    }
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("OTM_Token");
+    setTokenFound(!!token);
+
+    if (token) {
+      datas();
+    }
+  }, [tokenFound, getData]);
 
   return (
     <>
@@ -84,35 +112,23 @@ function TaskAddView({ auth_token_id }) {
             }}
           >
             <div className="tasks">
-
-              {tokenFound && <Button variant="primary" onClick={handleShow}>Add Task</Button>}
+              {tokenFound && (
+                <Button variant="primary" onClick={handleShow}>
+                  Add Task
+                </Button>
+              )}
               <h5>List View :-</h5>
               <div className="allTasks">
                 <ol className="text-start">
-                  <li>
-                    Sign In{" "}
-                    {tokenFound && (
-                      <FontAwesomeIcon icon={faTrash} className="ms-2" />
-                    )}
-                  </li>
-                  <li>
-                    Sign In{" "}
-                    {tokenFound && (
-                      <FontAwesomeIcon icon={faTrash} className="ms-2" />
-                    )}
-                  </li>
-                  <li>
-                    Sign In{" "}
-                    {tokenFound && (
-                      <FontAwesomeIcon icon={faTrash} className="ms-2" />
-                    )}
-                  </li>
-                  <li>
-                    Sign In{" "}
-                    {tokenFound && (
-                      <FontAwesomeIcon icon={faTrash} className="ms-2" />
-                    )}
-                  </li>
+                  {getData !== undefined &&
+                    getData.map((task, index) => (
+                      <li key={index}>
+                        {task.Title}
+                        {/* {tokenFound && (
+                          <FontAwesomeIcon icon={faTrash} className="ms-2" />
+                        )} */}
+                      </li>
+                    ))}
                 </ol>
               </div>
             </div>
@@ -127,7 +143,6 @@ function TaskAddView({ auth_token_id }) {
             </div>
           </div>
         </div>
-
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -145,7 +160,6 @@ function TaskAddView({ auth_token_id }) {
                       value={values.Title}
                       onChange={handleChange}
                       onBlur={handleBlur}
-
                     />
                   </div>
                   <div className="input">
@@ -156,8 +170,6 @@ function TaskAddView({ auth_token_id }) {
                       value={values.Due_date}
                       onChange={handleChange}
                       onBlur={handleBlur}
-
-
                     />
                   </div>
                 </div>
@@ -172,8 +184,8 @@ function TaskAddView({ auth_token_id }) {
                         value={values.Urgency}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        defaultValue= {false}
-                        />
+                        defaultValue={false}
+                      />
                     </div>
                     <div className="box2">
                       <label>Importance: </label>
@@ -183,16 +195,14 @@ function TaskAddView({ auth_token_id }) {
                         value={values.Importance}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        defaultValue= {false}
-                        />
+                        defaultValue={false}
+                      />
                     </div>
                   </div>
 
                   <div className="input-desc">
                     <label>Description: </label>
-                    <input
-                      type="text"
-                    />
+                    <input type="text" />
                   </div>
                 </div>
               </div>
@@ -206,9 +216,8 @@ function TaskAddView({ auth_token_id }) {
               </Button>
             </Modal.Footer>
           </Form>
-        </Modal >
+        </Modal>
       </div>
-
     </>
   );
 }
