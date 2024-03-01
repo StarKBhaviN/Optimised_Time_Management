@@ -1,17 +1,22 @@
-.task_main{
-    border: 0cap solid red;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.task_main {
+  border: 0cap solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-
-.tblDivs{
-    border: 2px solid green;
-    min-height: 180px;
+.tblDivs {
+  border: 0px solid green;
+  max-height: 180px;
+  /* overflow-y: scroll; */
 }
 
-.areaSetter{
-    width: 80%;
+.listViewInner {
+  height: 115px;
+  overflow-y: scroll;
+}
+
+.areaSetter {
+  width: 80%;
 }

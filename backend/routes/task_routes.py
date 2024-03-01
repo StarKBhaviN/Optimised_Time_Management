@@ -2,6 +2,7 @@ from models.tasks import Tasks
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from bson import ObjectId,json_util
+import pymongo
 
 
 task_add_bp = Blueprint('task_add_bp', __name__)
@@ -45,7 +46,7 @@ def get_all_tasks():
 
         token = get_jwt_identity() 
 
-        tasks = db.Tasks.find({"User_ID" : token})
+        tasks = db.Tasks.find({"User_ID" : token}).sort("Due_Date", pymongo.ASCENDING)
         tasks_json = json_util.dumps(tasks)
         
         return tasks_json,200

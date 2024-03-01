@@ -4,6 +4,7 @@
     border: 0px solid blue;
     width: 100%;
     height: 50%;
+    z-index: -1;
 }
 
 .curveDesign{

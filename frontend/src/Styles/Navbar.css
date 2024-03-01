@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  /* z-index: -1; */
   border: 0px solid red;
 }
 
@@ -21,7 +21,7 @@ a{
   border-radius: 16px;
   height: 46px;
   width: 450px;
-  z-index: 100;
+  z-index: 1000;
   border: 0px solid red;
 }
 

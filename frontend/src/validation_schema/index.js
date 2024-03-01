@@ -29,13 +29,10 @@ export const signupSchema = Yup.object({
         .max(50, 'Hobby must not exceed 50 characters'),
 });
 
-// export const createContactSchema = Yup.object({
-//     FirstName: Yup.string().min(3,"FirstName must contain minimum 3 Chars").required("FirstName is Required Field..."),
-//     LastName: Yup.string().min(3,"LastName must contain minimum 3 Chars").required("LastName is Required Field..."),
-//     Company: Yup.string().min(1,"Company must contain minimum 1 Char"),
-//     Job_Title: Yup.string().min(2,"JobTitle must contain minimum 1 Char"),
-//     Email: Yup.string().email("Invalid Email !!!").required("Email is Required Field...").transform(value => value.toLowerCase()),
-//     Ph: Yup.string().length(10,"Phone number must contain 10 digits").required("Phone Number is an required field..."),
-//     BirthDate: Yup.string(),
-//     Bio: Yup.string().min(5),
-// });
+export const taskAddSchema = Yup.object({
+    Title : Yup.string().min(3,"Task must contain minimum 3 Chars...").required("Task is Required Field..."),
+    Due_date : Yup.date(),
+    Urgency : Yup.boolean(),
+    Importance : Yup.boolean(),
+    Description : Yup.string().min(5,"Description Must contain 5 Chars...")
+});

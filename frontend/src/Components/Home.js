@@ -27,7 +27,6 @@ function Home() {
       <Intro a_token={token} auth_token_id={authToken} />
       <About a_token={token} auth_token_id={authToken} />
       <TaskAddView a_token={token} auth_token_id={authToken} />
-      <TaskRepresentations a_token={token} auth_token_id={authToken} />
     </>
   )
 }

@@ -13,11 +13,19 @@
   align-items: center;
 }
 
+.dynamicLi:hover{
+  cursor: pointer;
+}
+
+.btnAddTask {
+  border: 2px solid red;
+}
+
 .tasks {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  /* justify-content: center; */
   width: 500px;
   height: 220px;
   padding: 10px;
@@ -26,6 +34,28 @@
   border-radius: 12px;
   background-color: rgb(46, 35, 65);
   box-shadow: 2px 2px 4px rgb(23, 2, 74);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(93, 125, 189, 0.3);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(44, 65, 104, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(10, 181, 146, 0.3);
 }
 
 .aboutTask {
@@ -49,7 +79,6 @@
 }
 
 .task {
-  
   /* color: rgb(122, 9, 176); */
   font-size: large;
 }
