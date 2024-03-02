@@ -14,7 +14,7 @@
 
 .listViewInner {
   height: 115px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .areaSetter {

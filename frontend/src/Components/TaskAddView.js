@@ -168,7 +168,12 @@ function TaskAddView({ auth_token_id }) {
             <div className="aboutTask">
               <h3>Task Description</h3>
               <p style={{ color: "rgb(131,131,131)" }}>
-                {selectedTask ? selectedTask.Description : "Select a task to view its description."}
+                {!selectedTask ?
+                  "Select a task to view its Description..." :
+                  selectedTask.Description === "" ?
+                    "No Description found..." :
+                    selectedTask.Description
+                }
               </p>
             </div>
           </div>
@@ -180,10 +185,10 @@ function TaskAddView({ auth_token_id }) {
           </Modal.Header>
           <Form onSubmit={handleSubmit}>
             <Modal.Body>
-              <div className="task">
-                <div className="top">
+              <div className="task" style={{ border: "0px solid red" }}>
+                <div className="top" >
                   <div className="input">
-                    <label>Title:</label>
+                    <label className="mb-2">Title:</label>
                     <input
                       type="text"
                       name="Title"
@@ -193,7 +198,7 @@ function TaskAddView({ auth_token_id }) {
                     />
                   </div>
                   <div className="input">
-                    <label>Due_Date: </label>
+                    <label className="mb-2">Due_Date: </label>
                     <input
                       type="date"
                       name="Due_date"
@@ -204,7 +209,7 @@ function TaskAddView({ auth_token_id }) {
                   </div>
                 </div>
 
-                <div className="btm">
+                <div className="btm" style={{ border: "0px solid purple" }}>
                   <div className="inpBox">
                     <div className="box1">
                       <label>Urgency: </label>
@@ -228,15 +233,26 @@ function TaskAddView({ auth_token_id }) {
                     </div>
                   </div>
 
-                  <div className="input-desc">
-                    <label>Description: </label>
-                    <input
-                      type="text"
+                  <div className="input_desc">
+                    <label className="mb-2">Description: </label>
+                    <textarea
                       name="Description"
                       value={values.Description}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                    />
+                      placeholder="Enter description here..."
+                      style={{
+                        border: "1px solid black",
+                        borderRadius: "12px",
+                        height: "50px",
+                        width: "100%",
+                        outline: "1px solid grey",
+                        overflow: "auto",
+                        padding: "2px 6px ",
+                        lineHeight: "1.1",
+                        resize: "none"
+                      }}
+                    ></textarea>
                   </div>
                 </div>
               </div>

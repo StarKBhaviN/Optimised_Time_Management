@@ -3,7 +3,7 @@ import "../Styles/TaskRepresentation.css"
 import Table from 'react-bootstrap/Table';
 
 function TaskRepresentations({ taskData }) {
-
+    const taskDataCpy = [...taskData]
     return (
         <>
             <div className="task_main">
@@ -29,14 +29,28 @@ function TaskRepresentations({ taskData }) {
 
                                             <ol className="text-start">
                                                 {
-                                                    taskData.length !== 0 ?
-                                                        taskData
+                                                    taskDataCpy.length !== 0 ?
+                                                    taskDataCpy
+                                                            .sort((a, b) => new Date(a.Due_date) - new Date(b.Due_date))
                                                             .filter(task => task.Urgency === true && task.Importance === true)
-                                                            .map((task, index) => (
-                                                                <li key={index}>
-                                                                    {task.Title}
-                                                                </li>
-                                                            )) :
+                                                            .map((task, index) => {
+                                                                const dueDate = new Date(task.Due_date);
+                                                                const currentDate = new Date();
+                                                                const remainingDays = Math.ceil((dueDate - currentDate) / (1000 * 60 * 60 * 24));
+                                                                return (
+                                                                    <li key={index}>
+                                                                        {task.Title} |
+                                                                        {
+                                                                            remainingDays <= 0 ?
+                                                                                (<p style={{ color: "red", display: "inline" }}> Expired</p>) :
+                                                                                remainingDays === 1 ?
+                                                                                    (<p style={{ display: "inline", color: "blue" }}> {remainingDays} Day left... </p>) :
+                                                                                    isNaN(remainingDays) ? (<p style={{ display: "inline", color: "#780F73" }}> No data found </p>) :
+                                                                                        (<p style={{ display: "inline", color: "green" }}> {remainingDays} Days left... </p>)
+                                                                        }
+                                                                    </li>
+                                                                )
+                                                            }) :
                                                         (
                                                             <>
                                                                 <li>Crisis</li>
@@ -58,14 +72,28 @@ function TaskRepresentations({ taskData }) {
 
                                             <ol className="text-start">
                                                 {
-                                                    taskData.length !== 0 ?
-                                                        taskData
+                                                    taskDataCpy.length !== 0 ?
+                                                        taskDataCpy
+                                                            .sort((a, b) => new Date(a.Due_Date) - new Date(b.Due_Date))
                                                             .filter(task => task.Urgency === false && task.Importance === true)
-                                                            .map((task, index) => (
-                                                                <li key={index}>
-                                                                    {task.Title}
-                                                                </li>
-                                                            )) :
+                                                            .map((task, index) => {
+                                                                const dueDate = new Date(task.Due_date);
+                                                                const currentDate = new Date();
+                                                                const remainingDays = Math.ceil((dueDate - currentDate) / (1000 * 60 * 60 * 24));
+                                                                return (
+                                                                    <li key={index}>
+                                                                        {task.Title} |
+                                                                        {
+                                                                            remainingDays <= 0 ?
+                                                                                (<p style={{ color: "red", display: "inline" }}> Expired</p>) :
+                                                                                remainingDays === 1 ?
+                                                                                    (<p style={{ display: "inline", color: "blue" }}> {remainingDays} Day left... </p>) :
+                                                                                    isNaN(remainingDays) ? (<p style={{ display: "inline", color: "#780F73" }}> No data found </p>) :
+                                                                                        (<p style={{ display: "inline", color: "green" }}> {remainingDays} Days left... </p>)
+                                                                        }
+                                                                    </li>
+                                                                )
+                                                            }) :
                                                         (
                                                             <>
                                                                 <li>Value Clarification</li>
@@ -91,14 +119,28 @@ function TaskRepresentations({ taskData }) {
 
                                             <ol className="text-start">
                                                 {
-                                                    taskData.length !== 0 ?
-                                                        taskData
+                                                    taskDataCpy.length !== 0 ?
+                                                        taskDataCpy
+                                                            .sort((a, b) => new Date(a.Due_date) - new Date(b.Due_date))
                                                             .filter(task => task.Urgency === true && task.Importance === false)
-                                                            .map((task, index) => (
-                                                                <li key={index}>
-                                                                    {task.Title}
-                                                                </li>
-                                                            )) :
+                                                            .map((task, index) => {
+                                                                const dueDate = new Date(task.Due_date);
+                                                                const currentDate = new Date();
+                                                                const remainingDays = Math.ceil((dueDate - currentDate) / (1000 * 60 * 60 * 24));
+                                                                return (
+                                                                    <li key={index}>
+                                                                        {task.Title} |
+                                                                        {
+                                                                            remainingDays <= 0 ?
+                                                                                (<p style={{ color: "red", display: "inline" }}> Expired</p>) :
+                                                                                remainingDays === 1 ?
+                                                                                    (<p style={{ display: "inline", color: "blue" }}> {remainingDays} Day left... </p>) :
+                                                                                    isNaN(remainingDays) ? (<p style={{ display: "inline", color: "#780F73" }}> No data found </p>) :
+                                                                                        (<p style={{ display: "inline", color: "green" }}> {remainingDays} Days left... </p>)
+                                                                        }
+                                                                    </li>
+                                                                )
+                                                            }) :
                                                         (
                                                             <>
                                                                 <li>Meeting other people’s priorities and expectations</li>
@@ -120,14 +162,28 @@ function TaskRepresentations({ taskData }) {
 
                                             <ol className="text-start">
                                                 {
-                                                    taskData.length !== 0 ?
-                                                        taskData
+                                                    taskDataCpy.length !== 0 ?
+                                                        taskDataCpy
+                                                            .sort((a, b) => new Date(a.Due_date) - new Date(b.Due_date))
                                                             .filter(task => task.Urgency === false && task.Importance === false)
-                                                            .map((task, index) => (
-                                                                <li key={index}>
-                                                                    {task.Title}
-                                                                </li>
-                                                            )) :
+                                                            .map((task, index) => {
+                                                                const dueDate = new Date(task.Due_date);
+                                                                const currentDate = new Date();
+                                                                const remainingDays = Math.ceil((dueDate - currentDate) / (1000 * 60 * 60 * 24));
+                                                                return (
+                                                                    <li key={index}>
+                                                                        {task.Title} |
+                                                                        {
+                                                                            remainingDays <= 0 ?
+                                                                                (<p style={{ color: "red", display: "inline" }}> Expired</p>) :
+                                                                                remainingDays === 1 ?
+                                                                                    (<p style={{ display: "inline", color: "blue" }}> {remainingDays} Day left... </p>) :
+                                                                                    isNaN(remainingDays) ? (<p style={{ display: "inline", color: "#780F73" }}> No data found </p>) :
+                                                                                        (<p style={{ display: "inline", color: "green" }}> {remainingDays} Days left... </p>)
+                                                                        }
+                                                                    </li>
+                                                                )
+                                                            }) :
                                                         (
                                                             <>
                                                                 <li>Gossip</li>

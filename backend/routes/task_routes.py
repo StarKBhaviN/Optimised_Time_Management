@@ -2,7 +2,7 @@ from models.tasks import Tasks
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from bson import ObjectId,json_util
-import pymongo
+from datetime import datetime
 
 
 task_add_bp = Blueprint('task_add_bp', __name__)
@@ -46,7 +46,11 @@ def get_all_tasks():
 
         token = get_jwt_identity() 
 
-        tasks = db.Tasks.find({"User_ID" : token}).sort("Due_Date", pymongo.ASCENDING)
+        tasks = db.Tasks.find({"User_ID" : token})
+        # Convert string dates to datetime objects
+        # tasks = [task for task in tasks if task["Due_date"]]  # Filter out tasks with empty due dates
+        # tasks = sorted(tasks, key=lambda x: datetime.strptime(x["Due_date"], "%Y-%m-%d"))
+
         tasks_json = json_util.dumps(tasks)
         
         return tasks_json,200

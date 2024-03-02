@@ -13,7 +13,7 @@
   align-items: center;
 }
 
-.dynamicLi:hover{
+.dynamicLi:hover {
   cursor: pointer;
 }
 
@@ -70,6 +70,15 @@
 }
 
 /* css krupali */
+.task {
+  /* color: rgb(122, 9, 176); */
+  font-size: large;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .top {
   border: 0px solid red;
   display: flex;
@@ -78,52 +87,14 @@
   padding: 0 0 0px 0;
 }
 
-.task {
-  /* color: rgb(122, 9, 176); */
-  font-size: large;
-}
-
-.task .input {
+.top .input {
   position: relative;
   width: 210px;
   display: flex;
   flex-direction: column;
-  /* border: 2px solid green; */
-}
-
-.inpBox {
-  /* border: 2px solid green; */
-  display: flex;
-  flex-direction: column;
-  width: 210px;
-}
-
-.btm {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-  /* border: 2px solid red; */
-}
-
-.input-desc {
-  /* border: 2px solid green; */
-  width: 210px;
-}
-
-.input-desc input {
-  border: 1px solid black;
-  border-radius: 10px;
-  width: 100%;
-  height: 50px;
-  /* background-color: rgb(206, 179, 241); */
-}
-
-.input label {
-  margin: 0;
-}
-
-.input-desc label {
-  margin: 0;
+  align-items: flex-start;
+  justify-content: flex-end;
+  border: 0px solid green;
 }
 
 .top .input input {
@@ -131,21 +102,51 @@
   border-radius: 10px;
   /* background-color: rgb(206, 179, 241); */
   width: 100%;
-  height: 25px;
+  height: 30px;
+  outline: none;
+  padding: 6px;
 }
 
-.box1 input {
+.btm {
+  display: flex;
+  justify-content: space-between;
+  /* margin: 20px 0; */
+  /* border: 2px solid red; */
+}
+
+.inpBox {
+  border: 0px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 160px;
+  height: 80px;
+}
+
+.inpBox input{
   height: 20px;
   width: 50px;
-  transform: translate(24px, 5px);
 }
 
-.box2 label {
-  padding-top: 10px;
+.inpBox .box1 {
+  /* margin-top: 6px; */
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
 }
 
-.box2 input {
-  height: 20px;
-  width: 50px;
-  padding-top: 5px;
+.inpBox .box2 {
+  border: 0px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
+.input_desc {
+  border: 0px solid green;
+  width: 210px;
+}
+
+

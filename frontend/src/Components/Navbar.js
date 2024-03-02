@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../Styles/Navbar.css";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
@@ -32,9 +33,12 @@ function Navbar({ a_token, auth_token_id }) {
     const btnSignClicked = () => {
         if (a_token) {
             localStorage.removeItem("OTM_Token")
+            toast.warn("Logged out Successfully...", {
+                position: "bottom-left",
+            });
             navigate("/login")
         }
-        else{
+        else {
             navigate("/login")
         }
     }
