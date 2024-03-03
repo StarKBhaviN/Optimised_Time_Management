@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/taskAddViewOuter.css";
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
 import axios from "axios"
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import { taskAddSchema } from "../validation_schema";
 import TaskRepresentations from "./TaskRepresentations";
+import TaskAddModal from "../Modals/TaskAddModal"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPenToSquare, faTry } from '@fortawesome/free-solid-svg-icons';
+
 
 const initialValues = {
   Title: "",
@@ -106,6 +108,19 @@ function TaskAddView({ auth_token_id }) {
     }
   };
 
+  const delTask = (task) => {
+    try {
+      console.log(task)
+      axios.delete(`http://127.0.0.1:5000/api/tasks/task_del/${task._id.$oid}`, {
+        headers: {
+          Authorization: `Bearer ${auth_token_id}`
+        }
+      })
+    } catch (error) {
+
+    }
+  }
+
   useEffect(() => {
     const token = localStorage.getItem("OTM_Token");
     setTokenFound(!!token);
@@ -114,7 +129,8 @@ function TaskAddView({ auth_token_id }) {
       datas();
     }
     setTaskAddBtn(false)
-  }, [taskAddBtn, auth_token_id]);
+  }, [delTask, taskAddBtn, auth_token_id]);
+
 
   return (
     <>
@@ -145,12 +161,17 @@ function TaskAddView({ auth_token_id }) {
                   {
                     tokenFound ?
                       getData.map((task, index) => (
-                        <li className="dynamicLi" key={index} onClick={() => handleTaskClick(task)}>
-                          {task.Title}
-                          {/* {tokenFound && (
-                          <FontAwesomeIcon icon={faTrash} className="ms-2" />
-                        )} */}
-                        </li>
+                        <div style={{ border: "0px solid red", width: "98%", display: "flex", alignItems: "center ", justifyContent: "space-between" }}>
+                          <li style={{ maxWidth: "90%", border: "0px solid green" }} className="dynamicLi" key={index} onClick={() => handleTaskClick(task)}>
+                            {task.Title}
+                          </li>
+
+                          <div style={{ border: "0px solid green", display: "flex", justifyContent: "space-between", width: "38px" }}>
+                            <FontAwesomeIcon style={{cursor : "pointer"}} icon={faPenToSquare} />
+                            <FontAwesomeIcon style={{cursor : "pointer"}} icon={faTrash} onClick={() => delTask(task)} />
+                          </div>
+
+                        </div>
                       )) :
                       (
                         <>
@@ -179,94 +200,7 @@ function TaskAddView({ auth_token_id }) {
           </div>
         </div>
 
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add the Task</Modal.Title>
-          </Modal.Header>
-          <Form onSubmit={handleSubmit}>
-            <Modal.Body>
-              <div className="task" style={{ border: "0px solid red" }}>
-                <div className="top" >
-                  <div className="input">
-                    <label className="mb-2">Title:</label>
-                    <input
-                      type="text"
-                      name="Title"
-                      value={values.Title}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </div>
-                  <div className="input">
-                    <label className="mb-2">Due_Date: </label>
-                    <input
-                      type="date"
-                      name="Due_date"
-                      value={values.Due_date}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </div>
-                </div>
-
-                <div className="btm" style={{ border: "0px solid purple" }}>
-                  <div className="inpBox">
-                    <div className="box1">
-                      <label>Urgency: </label>
-                      <input
-                        type="checkbox"
-                        name="Urgency"
-                        checked={values.Urgency}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </div>
-                    <div className="box2">
-                      <label>Importance: </label>
-                      <input
-                        type="checkbox"
-                        name="Importance"
-                        checked={values.Importance}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="input_desc">
-                    <label className="mb-2">Description: </label>
-                    <textarea
-                      name="Description"
-                      value={values.Description}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      placeholder="Enter description here..."
-                      style={{
-                        border: "1px solid black",
-                        borderRadius: "12px",
-                        height: "50px",
-                        width: "100%",
-                        outline: "1px solid grey",
-                        overflow: "auto",
-                        padding: "2px 6px ",
-                        lineHeight: "1.1",
-                        resize: "none"
-                      }}
-                    ></textarea>
-                  </div>
-                </div>
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-              <Button variant="primary" type="submit" onClick={showToastMessage}>
-                Save Changes
-              </Button>
-            </Modal.Footer>
-          </Form>
-        </Modal>
+        <TaskAddModal show={show} handleClose={handleClose} handleSubmit={handleSubmit} values={values} handleChange={handleChange} handleBlur={handleBlur} showToastMessage={showToastMessage} />
       </div>
 
       <TaskRepresentations taskData={getData} />
