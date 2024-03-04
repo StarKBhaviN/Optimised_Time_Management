@@ -23,6 +23,7 @@ function TaskAddView({ auth_token_id }) {
   const [tokenFound, setTokenFound] = useState(false);
   const [show, setShow] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
+  const [deleteTaskBtn, setDeleteTaskBtn] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -108,6 +109,7 @@ function TaskAddView({ auth_token_id }) {
     }
   };
 
+
   const delTask = (task) => {
     try {
       console.log(task)
@@ -117,10 +119,9 @@ function TaskAddView({ auth_token_id }) {
         }
       })
     } catch (error) {
-
-    }
+      console.error("Error Deleting Task")
+    } 
   }
-
   useEffect(() => {
     const token = localStorage.getItem("OTM_Token");
     setTokenFound(!!token);
@@ -129,7 +130,8 @@ function TaskAddView({ auth_token_id }) {
       datas();
     }
     setTaskAddBtn(false)
-  }, [delTask, taskAddBtn, auth_token_id]);
+    setDeleteTaskBtn(false)
+  }, [deleteTaskBtn, taskAddBtn, auth_token_id]);
 
 
   return (
@@ -161,14 +163,17 @@ function TaskAddView({ auth_token_id }) {
                   {
                     tokenFound ?
                       getData.map((task, index) => (
-                        <div style={{ border: "0px solid red", width: "98%", display: "flex", alignItems: "center ", justifyContent: "space-between" }}>
+                        <div style={{ border: "0px solid red", width: "98%", display: "flex", alignItems: "center ", justifyContent: "space-between" }} key={index}>
                           <li style={{ maxWidth: "90%", border: "0px solid green" }} className="dynamicLi" key={index} onClick={() => handleTaskClick(task)}>
                             {task.Title}
                           </li>
 
                           <div style={{ border: "0px solid green", display: "flex", justifyContent: "space-between", width: "38px" }}>
-                            <FontAwesomeIcon style={{cursor : "pointer"}} icon={faPenToSquare} />
-                            <FontAwesomeIcon style={{cursor : "pointer"}} icon={faTrash} onClick={() => delTask(task)} />
+                            <FontAwesomeIcon style={{ cursor: "pointer" }} icon={faPenToSquare} />
+                            <FontAwesomeIcon style={{ cursor: "pointer" }} icon={faTrash} onClick={() => {
+                              delTask(task)
+                              setDeleteTaskBtn(true)
+                            }} />
                           </div>
 
                         </div>

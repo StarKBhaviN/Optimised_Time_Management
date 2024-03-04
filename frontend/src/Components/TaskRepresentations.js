@@ -21,16 +21,16 @@ function TaskRepresentations({ taskData }) {
                         <tbody>
                             <tr>
                                 <td style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", fontWeight: "700" }}>Important</td>
-                                <td>
-                                    <div className="urg_imp tblDivs">
-                                        <p>Quadrant #1:<br />Necessity Key Action: Manage Common Activities:</p>
+                                <td style={{padding : "0px"}}>
+                                    <div className="urg_imp tblDivs" >
+                                        <p className='pt-2' style={{color : "grey"}}>Quadrant #1:<br />Necessity Key Action: Manage Common Activities:</p>
 
                                         <div className="listViewInner">
 
                                             <ol className="text-start">
                                                 {
                                                     taskDataCpy.length !== 0 ?
-                                                    taskDataCpy
+                                                        taskDataCpy
                                                             .sort((a, b) => new Date(a.Due_date) - new Date(b.Due_date))
                                                             .filter(task => task.Urgency === true && task.Importance === true)
                                                             .map((task, index) => {
@@ -64,9 +64,9 @@ function TaskRepresentations({ taskData }) {
                                         </div>
                                     </div>
                                 </td>
-                                <td>
+                                <td style={{padding : "0px"}}>
                                     <div className="nurg_imp tblDivs">
-                                        <p>Quadrant #2:<br />Quality Time Key Action: Focus</p>
+                                        <p className='pt-2' style={{color : "grey"}}>Quadrant #2:<br />Quality Time Key Action: Focus</p>
 
                                         <div className="listViewInner">
 
@@ -111,9 +111,9 @@ function TaskRepresentations({ taskData }) {
                             </tr>
                             <tr>
                                 <td style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", fontWeight: "700" }}>Not Important</td>
-                                <td>
+                                <td style={{padding : "0px"}}>
                                     <div className="urg_nimp tblDivs">
-                                        <p>Quadrant #3:<br />Deception Key Action: Caution</p>
+                                        <p className='pt-2' style={{color : "grey"}}>Quadrant #3:<br />Deception Key Action: Caution</p>
 
                                         <div className="listViewInner">
 
@@ -154,9 +154,9 @@ function TaskRepresentations({ taskData }) {
                                         </div>
                                     </div>
                                 </td>
-                                <td>
+                                <td style={{padding : "0px"}}>
                                     <div className="urg_nimp tblDivs">
-                                        <p>Quadrant #4:<br />Waste Key Action: Avoid</p>
+                                        <p className='pt-2' style={{color : "grey"}}>Quadrant #4:<br />Waste Key Action: Avoid</p>
 
                                         <div className='listViewInner'>
 

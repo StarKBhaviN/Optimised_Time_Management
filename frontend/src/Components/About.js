@@ -18,7 +18,6 @@ function About() {
         });
     };
 
-    console.log(isFlipped)
     return (
         <div className='aboutOuter' id='about'>
             <div className="setWidth">

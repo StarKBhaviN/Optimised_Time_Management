@@ -1,5 +1,5 @@
 .task_main {
-  border: 0cap solid red;
+  border: 0px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,13 +7,17 @@
 }
 
 .tblDivs {
-  border: 0px solid green;
-  max-height: 180px;
-  /* overflow-y: scroll; */
+  border: 2px solid white;
+  color: rgb(167, 26, 125);
+  border-radius: 12px;
+  max-height: 225px;
+  background-color: rgb(46, 35, 65);
 }
 
+
 .listViewInner {
-  height: 115px;
+  border: 0px solid red;
+  height: 140px;
   overflow-y: auto;
 }
 

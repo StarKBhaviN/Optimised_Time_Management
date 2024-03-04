@@ -62,12 +62,12 @@ function Signup() {
 
   return (
     <div className='outerSignup'>
-      <div class="wrapper">
+      <div className="wrapper">
         <form autoComplete="off" onSubmit={handleSubmit}>
           <h1>Register</h1>
-          <div class="input-box">
+          <div className="input-box">
             <input
-              class="inp"
+              className="inp"
               type="text"
               name='Name'
               value={values.Name}
@@ -75,11 +75,11 @@ function Signup() {
               onBlur={handleBlur}
             />
             <label>Name</label>
-            <i class='bx bxs-user'></i>
+            <i className='bx bxs-user'></i>
           </div>
-          <div class="input-box">
+          <div className="input-box">
             <input
-              class="inp"
+              className="inp"
               type="text"
               name='Email'
               value={values.Email}
@@ -87,10 +87,10 @@ function Signup() {
               onBlur={handleBlur}
             />
             <label>Email</label>
-            <i class='bx bxs-envelope'></i>
+            <i className='bx bxs-envelope'></i>
 
           </div>
-          <div class="input-box">
+          <div className="input-box">
             <input
               type="password"
               name='Password'
@@ -99,7 +99,7 @@ function Signup() {
               onBlur={handleBlur}
             />
             <label>Password</label>
-            <i class='bx bx-lock'></i>
+            <i className='bx bx-lock'></i>
           </div>
 
           <div className="gender">
@@ -169,7 +169,7 @@ function Signup() {
             <i className='bx bxs-bookmarks'></i>
           </div>
 
-          <button type="submit" class="btn mb-2" onClick={showToastMessage}>Sign-up</button>
+          <button type="submit" className="btn mb-2" onClick={showToastMessage}>Sign-up</button>
           <a href="/login" style={{ color: "white" }}>Already Have an Account?</a>
 
         </form>
