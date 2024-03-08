@@ -45,34 +45,41 @@ function TaskAddView({ auth_token_id }) {
     setSelectedTask(task); // Update selectedTask state when a task is clicked
   };
 
+  console.log(selectedTask)
+
   const [taskAddBtn, setTaskAddBtn] = useState(false)
 
   const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: initialValues,
     validationSchema: taskAddSchema,
-    onSubmit: async (values, action) => {
+    onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await axios.post(
-          "http://127.0.0.1:5000/api/tasks/task_add",
-          {
-            Title: values.Title,
-            Due_date: values.Due_date,
-            Urgency: values.Urgency,
-            Importance: values.Importance,
-            Description: values.Description,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${auth_token_id}`,
-            },
-          }
-        );
+        const response = writeMode === "Add" ?
+          await axios.post(
+            "http://127.0.0.1:5000/api/tasks/task_add",
+            values,
+            {
+              headers: {
+                Authorization: `Bearer ${auth_token_id}`,
+              },
+            }
+          ) :
+          await axios.put(
+            `http://127.0.0.1:5000/api/tasks/task_update/${selectedTask._id.$oid}`,
+            values,
+            {
+              headers: {
+                Authorization: `Bearer ${auth_token_id}`,
+              },
+            }
+          );
 
         if (response) {
-          toast.success("Task Added Successfully!!!", {
+          toast.success(writeMode === "Add" ? "Task Added Successfully!!!" : "Task Edited Successfully!!!", {
             position: "bottom-left",
           });
-
+          handleClose();
+          resetForm();
           setTaskAddBtn(true)
         }
       } catch (error) {
@@ -81,10 +88,9 @@ function TaskAddView({ auth_token_id }) {
           position: "bottom-left",
         });
       }
-
-      action.resetForm();
     },
   });
+
 
   const errorMessage = Object.values(errors)
 
@@ -184,6 +190,7 @@ function TaskAddView({ auth_token_id }) {
                           <div style={{ border: "0px solid green", display: "flex", justifyContent: "space-between", width: "38px" }}>
                             <FontAwesomeIcon style={{ cursor: "pointer" }} icon={faPenToSquare} onClick={() => {
                               setWriteMode("Edit")
+                              handleTaskClick(task)
                               handleShow()
                             }} />
                             <FontAwesomeIcon style={{ cursor: "pointer" }} icon={faTrash} onClick={() => {

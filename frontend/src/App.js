@@ -11,14 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import Quotes from './Components/Quotes';
 
 function App() {
-  const [data, setData] = useState(null)
-
-  useEffect(() => {
-    axios.get('http://localhost:5000/')
-      .then(response => setData(response.data))
-      .catch(error => console.log(error));
-  }, []);
-
   return (
     <Router>
       <div className="App">
