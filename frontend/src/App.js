@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Signup from './Components/Signup';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Quotes from './Components/Quotes';
 
 function App() {
   const [data, setData] = useState(null)
@@ -27,7 +28,9 @@ function App() {
           <Route path="/SignUp" Component={Signup} />
         </Routes>
 
+        <Quotes />
         <ToastContainer />
+
       </div>
     </Router>
   );

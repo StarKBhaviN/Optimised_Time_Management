@@ -1,6 +1,8 @@
+# User modal which contains basic Schema of User collection
 from datetime import datetime
 
 class User:
+    # All fields required in User collection
     def __init__(self, name, email, gender, password, phNo, hobby):
         self.name = name
         self.email = email
@@ -9,7 +11,7 @@ class User:
         self.phNo = phNo
         self.hobby = hobby
 
-    
+    # Create a user and add in collection
     def create_user(self, db):
         user_collection = db["Users"]
         user_id = self._get_next_sequence(db)
@@ -29,7 +31,7 @@ class User:
         print(user_id)
         return user_id
 
-
+    # Methods that can be applied on User collection
     @staticmethod
     def getUserByEmail(db, email):
         user_collection = db["Users"]
@@ -43,6 +45,7 @@ class User:
         user_collection = db["Users"]
         user_collection.delete_one({"_id": self._id})
 
+    # Used for increamating userID on every new user creation
     @staticmethod
     def _get_next_sequence(db):
         counters_collection = db["counters"]

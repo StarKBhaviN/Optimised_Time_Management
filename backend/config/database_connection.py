@@ -1,3 +1,4 @@
+# Connects the backend with MongoDB
 import pymongo
 
 class MongoDB:

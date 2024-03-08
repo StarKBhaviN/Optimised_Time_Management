@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import Intro from './Intro';
 import About from './About';
-import TaskRepresentations from './TaskRepresentations';
 import TaskAddView from './TaskAddView';
 
 function Home() {

@@ -3,12 +3,12 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-function TaskAddModal({ show, handleClose, handleSubmit, values, handleChange, handleBlur, showToastMessage }) {
+function TaskAddModal({ show, writeMode, handleClose, handleSubmit, values, handleChange, handleBlur, showToastMessage }) {
     return (
         <div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add the Task</Modal.Title>
+                    <Modal.Title>{`${writeMode === "Add" ? "Add" : "Edit"} The Task`}</Modal.Title>
                 </Modal.Header>
                 <Form onSubmit={handleSubmit}>
                     <Modal.Body>
@@ -89,7 +89,7 @@ function TaskAddModal({ show, handleClose, handleSubmit, values, handleChange, h
                             Close
                         </Button>
                         <Button variant="primary" type="submit" onClick={showToastMessage}>
-                            Save Changes
+                            {writeMode === "Add" ? "Add Task" : "Save Changes"}
                         </Button>
                     </Modal.Footer>
                 </Form>

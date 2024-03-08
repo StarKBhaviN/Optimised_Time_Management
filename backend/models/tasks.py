@@ -1,7 +1,9 @@
+# Tasks modal which contains basic Schema of Task collection
 from datetime import datetime
 from flask_jwt_extended import get_jwt_identity
 
 class Tasks:
+    # All fields required in Tasks collection
     def __init__(self, title, due_date, urgency, importance,description):
         self.title = title
         self.due_date = due_date
@@ -9,6 +11,7 @@ class Tasks:
         self.importance = importance
         self.description = description
 
+    # Add task in database collection
     def add_task(self, db, user_id):
 
         task_collection = db["Tasks"]

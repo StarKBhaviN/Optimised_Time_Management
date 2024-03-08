@@ -74,7 +74,7 @@ function Signup() {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <label>Name</label>
+            <label for="">Name</label>
             <i className='bx bxs-user'></i>
           </div>
           <div className="input-box">
@@ -86,7 +86,7 @@ function Signup() {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <label>Email</label>
+            <label for="">Email</label>
             <i className='bx bxs-envelope'></i>
 
           </div>
@@ -98,14 +98,14 @@ function Signup() {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <label>Password</label>
+            <label for="">Password</label>
             <i className='bx bx-lock'></i>
           </div>
 
           <div className="gender">
             <h3>Gender</h3>
             <div className="inpGender">
-              <label htmlFor="male">
+              <label for="" htmlFor="male">
                 <input
                   id="male"
                   name="Gender"
@@ -117,7 +117,7 @@ function Signup() {
                 />
                 Male
               </label>
-              <label htmlFor="female">
+              <label for="" htmlFor="female">
                 <input
                   id="female"
                   name="Gender"
@@ -129,7 +129,7 @@ function Signup() {
                 />
                 Female
               </label>
-              <label htmlFor="other">
+              <label for="" htmlFor="other">
                 <input
                   id="other"
                   name="Gender"
@@ -153,7 +153,7 @@ function Signup() {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <label>Phone No.</label>
+            <label for="">Phone No.</label>
             <i className='bx bxs-phone'></i>
           </div>
           <div className="input-box">
@@ -165,7 +165,7 @@ function Signup() {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <label>Hobby</label>
+            <label for="">Hobby</label>
             <i className='bx bxs-bookmarks'></i>
           </div>
 

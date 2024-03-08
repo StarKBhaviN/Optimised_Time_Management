@@ -22,11 +22,19 @@ const initialValues = {
 function TaskAddView({ auth_token_id }) {
   const [tokenFound, setTokenFound] = useState(false);
   const [show, setShow] = useState(false);
+  const [writeMode, setWriteMode] = useState("Add")
   const [selectedTask, setSelectedTask] = useState(null);
   const [deleteTaskBtn, setDeleteTaskBtn] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setShow(true)
+  };
+
+  const btnAddTaskClicked = () => {
+    setWriteMode("Add")
+    handleShow()
+  }
 
   useEffect(() => {
     const token = localStorage.getItem("OTM_Token");
@@ -118,9 +126,13 @@ function TaskAddView({ auth_token_id }) {
           Authorization: `Bearer ${auth_token_id}`
         }
       })
+      toast.error("Task Deleted Successfully!!!", {
+        position: "bottom-left"
+      })
+
     } catch (error) {
       console.error("Error Deleting Task")
-    } 
+    }
   }
   useEffect(() => {
     const token = localStorage.getItem("OTM_Token");
@@ -152,7 +164,8 @@ function TaskAddView({ auth_token_id }) {
             <div className="tasks">
               <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", position: "sticky" }}>
 
-                <Button className="btnAddTask mb-2" variant="primary" style={{ visibility: tokenFound ? "visible" : "hidden" }} onClick={handleShow}>
+                <Button className="btnAddTask mb-2" variant="primary" style={{ visibility: tokenFound ? "visible" : "hidden" }}
+                  onClick={btnAddTaskClicked}>
                   Add Task
                 </Button>
 
@@ -169,7 +182,10 @@ function TaskAddView({ auth_token_id }) {
                           </li>
 
                           <div style={{ border: "0px solid green", display: "flex", justifyContent: "space-between", width: "38px" }}>
-                            <FontAwesomeIcon style={{ cursor: "pointer" }} icon={faPenToSquare} />
+                            <FontAwesomeIcon style={{ cursor: "pointer" }} icon={faPenToSquare} onClick={() => {
+                              setWriteMode("Edit")
+                              handleShow()
+                            }} />
                             <FontAwesomeIcon style={{ cursor: "pointer" }} icon={faTrash} onClick={() => {
                               delTask(task)
                               setDeleteTaskBtn(true)
@@ -205,8 +221,8 @@ function TaskAddView({ auth_token_id }) {
           </div>
         </div>
 
-        <TaskAddModal show={show} handleClose={handleClose} handleSubmit={handleSubmit} values={values} handleChange={handleChange} handleBlur={handleBlur} showToastMessage={showToastMessage} />
-      </div>
+        <TaskAddModal show={show} writeMode={writeMode} handleClose={handleClose} handleSubmit={handleSubmit} values={values} handleChange={handleChange} handleBlur={handleBlur} showToastMessage={showToastMessage} />
+      </div >
 
       <TaskRepresentations taskData={getData} />
     </>

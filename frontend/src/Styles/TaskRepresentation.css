@@ -8,12 +8,11 @@
 
 .tblDivs {
   border: 2px solid white;
-  color: rgb(167, 26, 125);
-  border-radius: 12px;
+  color: rgb(205, 48, 84);
+  border-radius: 0;
   max-height: 225px;
   background-color: rgb(46, 35, 65);
 }
-
 
 .listViewInner {
   border: 0px solid red;

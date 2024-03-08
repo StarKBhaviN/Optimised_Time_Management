@@ -4,6 +4,7 @@ from models.user import User
 from passlib.hash import sha256_crypt
 from flask_jwt_extended import create_access_token
 
+# Blueprint for creating a new user
 user_create_bp = Blueprint('user_create_bp', __name__)
 
 @user_create_bp.route("/api/user/create_user", methods=["POST"])
@@ -54,7 +55,7 @@ def add_user():
 
         # Save user to database
         user_id = user.create_user(db)
-        print("User : ",user_id)
+
         # Generate access token for the newly created user
         access_token = create_access_token(identity=user_id)
 
@@ -63,6 +64,7 @@ def add_user():
         return jsonify({"error": str(e)}), 500
 
 
+# Blueprint for user login
 user_login_bp = Blueprint('user_login_bp', __name__)
 
 @user_login_bp.route('/api/user/login',methods=["POST"])
@@ -91,7 +93,6 @@ def login():
             return jsonify({"error" : "Incorrect Login credentials."}), 401
 
         # Generate access token for the user
-        print("User : ",existing_user["_id"])
         access_token = create_access_token(identity=existing_user["_id"])
 
         return jsonify({"message": "User logged in successfully", "access_token": access_token}), 200
@@ -99,6 +100,7 @@ def login():
         return jsonify({"error": str(e)}), 500
 
 
+# Blueprint for getting user information
 user_info_bp = Blueprint('user_info_bp', __name__)
 
 @user_info_bp.route('/api/user/info', methods=["GET"])
@@ -113,7 +115,7 @@ def get_user_info():
         user = db.Users.find_one({"_id": user_id}, {"password": 0})
 
         if user:
-            user.pop('password', None)
+            user.pop('password', None)  # Remove password from user info
             return jsonify(user), 200
         else:
             return jsonify({"error": "User not found"}), 404

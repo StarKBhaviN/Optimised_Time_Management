@@ -1,10 +1,12 @@
+# ROUTES related to task adding, updating, deleting
+
 from models.tasks import Tasks
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from bson import ObjectId,json_util
 from datetime import datetime
 
-
+# ROUTE_1 : [POST] - Add tasks in tasks collection of database (LOGIN required)
 task_add_bp = Blueprint('task_add_bp', __name__)
 
 @task_add_bp.route("/api/tasks/task_add", methods=["POST"])
@@ -25,15 +27,15 @@ def add_task():
             urgency=task_data["Urgency"],
             description=task_data["Description"]
         )
-        print(token)
+        
         task.add_task(db, token) 
 
         return jsonify({"message": "Task Added Successfully"}), 201
-    
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 
+# ROUTE_2 : [GET] - GET all task related to particular user only (LOGIN required)
 get_tasks_bp = Blueprint('get_tasks_bp',__name__)
 
 @get_tasks_bp.route("/api/tasks/get_all_tasks", methods=["GET"])
@@ -58,6 +60,7 @@ def get_all_tasks():
         return jsonify({"error": str(e)}), 500
 
 
+# ROUTE_3 : [DELETE] - Deletes a task with selected TaskID (LOGIN required)
 task_delete_bp = Blueprint('task_delete_bp', __name__)
 
 @task_delete_bp.route("/api/tasks/task_del/<id>", methods=["DELETE"])
@@ -80,6 +83,46 @@ def task_delete(id):
             return jsonify({"message": "Task deleted successfully"}), 200
         else:
             return jsonify({"error": "Task not found or you don't have permission to delete it"}), 404
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+# ROUTE_4: [PUT] - Update a task with selected TaskID (LOGIN required)
+task_update_bp = Blueprint('task_update_bp', __name__)
+
+@task_update_bp.route("/api/tasks/task_update/<id>", methods=["PUT"])
+@jwt_required()
+def task_update(id):
+    try:
+        from config.database_connection import MongoDB
+        mongodb = MongoDB()
+        db = mongodb.get_db("Opt_Time_Management")
+
+        token = get_jwt_identity()
+        
+        task_id = ObjectId(id)
+        task_data = request.json
+
+        existing_task = db.Tasks.find_one({"_id": task_id, "User_ID": token})
+        if not existing_task:
+            return jsonify({"error": "Task not found or you don't have permission to update it"}), 404
+
+        # Update task fields
+        db.Tasks.update_one(
+            {"_id": task_id},
+            {
+                "$set": {
+                    "Title": task_data.get("Title", existing_task["Title"]),
+                    "Due_date": task_data.get("Due_date", existing_task["Due_date"]),
+                    "Importance": task_data.get("Importance", existing_task["Importance"]),
+                    "Urgency": task_data.get("Urgency", existing_task["Urgency"]),
+                    "Description": task_data.get("Description", existing_task["Description"]),
+                }
+            }
+        )
+
+        return jsonify({"message": "Task updated successfully"}), 200
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500

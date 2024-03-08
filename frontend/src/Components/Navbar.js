@@ -3,8 +3,6 @@ import axios from "axios";
 import "../Styles/Navbar.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar({ a_token, auth_token_id }) {
     const navigate = useNavigate();

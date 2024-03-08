@@ -1,6 +1,5 @@
 import React from 'react'
 import "../Styles/Intro.css"
-import clockimage from "../Images/ClockImage.jpg"
 import Clock from './Clock'
 
 function Intro() {
@@ -18,7 +17,7 @@ function Intro() {
                             HOW TO MANAGE
                         </button>
                     </div>
-                    
+
                     <div className="infoImage">
                         <Clock />
                     </div>

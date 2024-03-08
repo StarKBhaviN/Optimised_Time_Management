@@ -6,8 +6,6 @@ import { toast } from 'react-toastify';
 import { loginSchema } from '../validation_schema';
 import { useNavigate } from "react-router-dom";
 
-// http://127.0.0.1:5000/api/user/create_user
-
 function Login() {
 
   const navigate = useNavigate();
