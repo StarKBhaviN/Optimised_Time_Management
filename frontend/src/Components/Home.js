@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Intro from './Intro';
 import About from './About';
 import TaskAddView from './TaskAddView';
+import { motion } from "framer-motion"
 
 function Home() {
 
@@ -22,10 +23,11 @@ function Home() {
 
   return (
     <>
-      <Navbar a_token={token} auth_token_id={authToken} />
-      <Intro a_token={token} auth_token_id={authToken} />
-      <About a_token={token} auth_token_id={authToken} />
-      <TaskAddView a_token={token} auth_token_id={authToken} />
+      {/* Calling all the componenets in Home */}
+      <Navbar a_token={token} auth_token_id={authToken} motion={motion} />
+      <Intro a_token={token} auth_token_id={authToken} motion={motion} />
+      <About a_token={token} auth_token_id={authToken} motion={motion} />
+      <TaskAddView a_token={token} auth_token_id={authToken} motion={motion} />
     </>
   )
 }

@@ -26,7 +26,7 @@ function Clock() {
         const intervalId = setInterval(setDate, 1000);
         setDate(); // Call setDate initially to set the clock without waiting for the first second to pass
 
-        return () => clearInterval(intervalId); // Cleanup the interval on unmount
+        return () => clearInterval(intervalId); // Cleanup the interval on unmount page
     }, []);
     return (
         <>

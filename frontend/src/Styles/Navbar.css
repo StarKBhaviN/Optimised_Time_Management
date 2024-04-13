@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
-  border: 0px solid red;
+  /* border: 2px solid red; */
 }
 
 a {

@@ -25,7 +25,8 @@ def add_task():
             due_date=task_data["Due_date"],
             importance=task_data["Importance"],
             urgency=task_data["Urgency"],
-            description=task_data["Description"]
+            description=task_data["Description"],
+            Notification_period=task_data["Notification_period"]
         )
         
         task.add_task(db, token) 
@@ -118,6 +119,7 @@ def task_update(id):
                     "Importance": task_data.get("Importance", existing_task["Importance"]),
                     "Urgency": task_data.get("Urgency", existing_task["Urgency"]),
                     "Description": task_data.get("Description", existing_task["Description"]),
+                    "Notification_period": task_data.get("Notification_period", existing_task["Notification_period"]),
                 }
             }
         )

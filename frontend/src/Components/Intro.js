@@ -2,7 +2,7 @@ import React from 'react'
 import "../Styles/Intro.css"
 import Clock from './Clock'
 
-function Intro() {
+function Intro({ motion }) {
     return (
         <>
             <div className='introOuter' id='home'>
