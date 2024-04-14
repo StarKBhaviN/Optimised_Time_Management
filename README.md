@@ -15,7 +15,7 @@
 3. Start both frontend and backend servers:
 	- Open `new terminal`
 	  - cd frontend
-	  - npm run start
+	  - npm run start (PORT must be : 3000)
 	- Open `new terminal`
 	  - cd backend
 	  - python app.py
