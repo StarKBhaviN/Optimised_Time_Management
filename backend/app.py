@@ -6,7 +6,7 @@ from routes.task_routes import task_add_bp,task_delete_bp,get_tasks_bp,task_upda
 from flask_jwt_extended import JWTManager
 import datetime
 
-# Flask app configuration
+# Flask app configurations
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:3000"])
 app.config["MONGO_URI"] = "mongodb://localhost:27017/Opt_Time_Management"

@@ -12,7 +12,7 @@ class Tasks:
         self.description = description
         self.Notification_period = Notification_period
 
-    # Add task in database collection
+    # Add task in database collection.
     def add_task(self, db, user_id):
 
         task_collection = db["Tasks"]

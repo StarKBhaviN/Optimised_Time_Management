@@ -6,7 +6,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from bson import ObjectId,json_util
 from datetime import datetime
 
-# ROUTE_1 : [POST] - Add tasks in tasks collection of database (LOGIN required)
+# ROUTE_1 : [POST] - Add tasks in tasks collection of database (LOGIN required).
 task_add_bp = Blueprint('task_add_bp', __name__)
 
 @task_add_bp.route("/api/tasks/task_add", methods=["POST"])
