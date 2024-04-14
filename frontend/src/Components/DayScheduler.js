@@ -34,69 +34,42 @@ const Scheduler = () => {
   };
 
   const generateSchedule = (tasks) => {
-  const now = new Date();
-  const schedule = [];
+    const now = new Date();
+    const schedule = [];
 
-  for (let i = 0; i < 5; i++) {
-    const date = new Date(now);
-    date.setDate(date.getDate() + i);
+    for (let i = 0; i < 5; i++) {
+      const date = new Date(now);
+      date.setDate(date.getDate() + i);
 
-    const daySchedule = {
-      date: date.toDateString(),
-      slots: [],
-    };
+      const daySchedule = {
+        date: date.toDateString(),
+        slots: [],
+      };
 
-    // Add wake up time
-    daySchedule.slots.push({
-      time: "08:00",
-      task: "Wake up",
-    });
+      // Add fixed schedule events
+      daySchedule.slots.push({ time: "08:00", task: "Wake up" });
+      daySchedule.slots.push({ time: "12:00", task: "Lunch" });
+      daySchedule.slots.push({ time: "18:00", task: "Dinner" });
+      daySchedule.slots.push({ time: "22:00", task: "Sleep" });
 
-    // Add lunch time
-    daySchedule.slots.push({
-      time: "12:00",
-      task: "Lunch",
-    });
-
-    // Add dinner time
-    daySchedule.slots.push({
-      time: "18:00",
-      task: "Dinner",
-    });
-
-    // Add sleep time
-    daySchedule.slots.push({
-      time: "22:00",
-      task: "Sleep",
-    });
-
-    // Sort tasks by priority (importance and urgency)
-    tasks.sort((a, b) => {
-      if (a.importance !== b.importance) {
-        return b.importance - a.importance;
-      }
-      return b.urgency - a.urgency;
-    });
-
-    let currentTime = new Date(date);
-    currentTime.setHours(8, 0); // Start from 8:00 AM
-
-    tasks.forEach((task) => {
-      if (task.duration > 0) {
-        const taskStartTime = new Date(currentTime);
+      // Add tasks to the schedule
+      tasks.forEach((task) => {
+        const startTime = new Date(date);
+        startTime.setHours(9 + daySchedule.slots.length - 4); // Increment time for each task
         daySchedule.slots.push({
-          time: getTimeString(taskStartTime.getHours(), taskStartTime.getMinutes()),
-          task: task.title,
+          time: getTimeString(startTime.getHours(), startTime.getMinutes()),
+          task: task.Title,
         });
-        currentTime.setMinutes(currentTime.getMinutes() + task.duration * 60);
-      }
-    });
+      });
 
-    schedule.push(daySchedule);
-  }
+      // Sort tasks within the day's schedule by time
+      daySchedule.slots.sort((a, b) => a.time.localeCompare(b.time));
 
-  return schedule;
-};
+      schedule.push(daySchedule);
+    }
+
+    return schedule;
+  };
 
   return (
     <div>
