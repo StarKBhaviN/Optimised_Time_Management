@@ -1,0 +1,16 @@
+1. Rebasing
+
+   - git fetch origin
+   - git merge origin/main
+   - git push origin <branch-name>
+
+2. Get repo
+
+    - git clone https://github.com/your-username/repository-name.git
+    - cd repository-name
+    - git checkout -b new-branch-name
+    - Make changes
+    - git add .
+    - git commit -m "Your descriptive commit message goes here"
+    - git push origin new-branch-name
+    - done

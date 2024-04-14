@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Intro from './Intro';
 import About from './About';
 import TaskAddView from './TaskAddView';
+import DayScheduler from './DayScheduler'
 import { motion } from "framer-motion"
 
 function Home() {
@@ -28,6 +29,7 @@ function Home() {
       <Intro a_token={token} auth_token_id={authToken} motion={motion} />
       <About a_token={token} auth_token_id={authToken} motion={motion} />
       <TaskAddView a_token={token} auth_token_id={authToken} motion={motion} />
+      <DayScheduler ></DayScheduler>
     </>
   )
 }
