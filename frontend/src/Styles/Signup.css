@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&gisplay=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.outerSignup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: url("https://getenergyforms.com/wp-content/uploads/2013/11/website-background-free-abstract-1024x640.jpg");
+  font-family: "Poppins", sans-serif;
+  background-size: cover;
+  background-position: center;
+}
+
+.wrapper {
+  width: 420px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  border-radius: 10px;
+  padding: 30px 40px 10px 40px;
+  box-shadow: 2px 2px 4px rgb(47, 219, 219);
+}
+
+.wrapper h1 {
+  font-size: 36px;
+  text-align: center;
+  color: white;
+}
+
+.wrapper h3 {
+  font-size: 15px;
+  color: white;
+  font-weight: 500;
+  /* border: 2px solid white; */
+  padding-left: 25px;
+}
+
+.wrapper .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 20px 0;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 16px 45px 0px 24px;
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.inp {
+  padding-top: 12px;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: 10px;
+  font-size: 14px;
+  color: rgb(139, 139, 139);
+}
+
+.input-box input:hover {
+  box-shadow: 0 0 10px rgb(47, 219, 219);
+}
+
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.wrapper .gender {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 14.5px;
+  margin: 0px 0 15px;
+  /* border: 2px solid white; */
+}
+
+.gender label input {
+  accent-color: #fff;
+  margin-right: 3px;
+}
+
+.inpGender {
+  padding-left: 25px;
+}
+
+#Male {
+  margin-right: 30px;
+}
+/* .gender a {
+    color: #fff;
+    text-decoration: none;
+} */
+
+.gender a:hover {
+  text-decoration: underline;
+}
+
+.wrapper .btn {
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.wrapper .btn:hover {
+  box-shadow: 0 0 10px rgb(240, 244, 244);
+}
+
+.wrapper .register-link {
+  font-size: 14.5px;
+  text-align: center;
+  margin: 20px 0 15px;
+}
+
+.register-link p a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link p a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info{
+    height: 50px;
+    width: 900px;
+    margin-top: 50px;
+    margin-left: 20%;
+    font-size: medium;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.date{
+    margin-top: 70px;
+    margin-left: 230px;
+    margin-bottom: 25px;
+    display: flex;
+    padding: 10px;
+    font-size:medium;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 20px;
+    width: 200px;
+}
+
+.table{
+   /* margin: 20px;  */
+   /* padding: 20px; */
+   height: 100%;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   text-align: center;
+   /* border: 2px solid black; */
+   /* background-color: rgb(208, 238, 238); */
+}
+.table table{
+    border: 2px solid black;
+    width: 70%;
+} 
+
+.table thead{
+    background-color:rgb(142, 241, 241);
+    border: 2px solid red;
+}
+
+.table th{
+    padding-left: 41px;
+    padding-right: 41px;
+    /* border: 2px solid red; */
+}
+
+.table td{
+    padding-left: 41px;
+    padding-right: 41px;
+    /* border: 2px solid red; */
+}
+button{
+    margin-left: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+.btn{
+    display: flex;
+    /* border: 2px solid green; */
+    margin-left: 46%;
+}
+.btn button{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    margin-bottom: 25px;
+    height: 40px;
+    width: 60px;
+    border-radius: 10px;
+    background-color: rgb(6, 96, 164);
+    color: white;
+    cursor: pointer;
+}
+.top{
+    display: flex;
+}
+
+.bottom{
+    margin: 20px;
+    margin-left: 61%;
+    height: 40px;
+    width: 60px;
+    border-radius: 10px;
+    background-color: rgb(6, 96, 164);
+    color: white;
+}
+.make{
+    margin-top: 15px;
+    margin-left: 15%;
+    display: flex;
+    align-items: center;
+}
+.gen{
+    height: 40px;
+    width: 91px;
+    border-radius: 10px;
+    background-color: rgb(6, 96, 164);
+    color: white;
+}
+.new{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 106px;
+    border-radius: 10px;
+    background-color: rgb(6, 96, 164);
+    color: white;
+}

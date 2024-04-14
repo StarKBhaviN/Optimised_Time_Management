@@ -1,0 +1,121 @@
+.navDiv {
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  /* border: 2px solid red; */
+}
+
+a {
+  scroll-behavior: smooth;
+}
+
+.navStyle {
+  background-color: rgb(32, 32, 32);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 16px;
+  height: 46px;
+  width: 450px;
+  z-index: 1000;
+  border: 0px solid red;
+}
+
+.cmnLink {
+  text-decoration: none;
+  color: rgb(124, 119, 119);
+}
+
+.cmnBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75%;
+  border-radius: 10px;
+  background-color: transparent;
+  color: white;
+}
+
+.btnSetNav {
+  display: flex;
+  align-items: center;
+  margin-right: 6px;
+  height: 100%;
+}
+
+.clsJoinUs {
+  color: black;
+  font-weight: 600;
+}
+
+.clsSignIn {
+  color: white;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.btnSignIn {
+  width: 95px;
+  border: 1px solid grey;
+}
+
+.btnJoinUs {
+  width: 120px;
+  border: 1px solid white;
+  background-color: rgb(219, 219, 219);
+  box-shadow: 0px 0px 0px 1px purple;
+}
+
+.btnJoinUs:hover {
+  box-shadow: 0px 0px 10px 1px purple;
+}
+
+.setBtnNav {
+  text-align: center;
+}
+
+.innerLink {
+  /* color: white; */
+  text-decoration: none;
+}
+
+.animApply {
+  animation-duration: 0.6s;
+  transform-origin: bottom;
+}
+
+.animNavText:hover {
+  animation-name: textAnimIn;
+  animation-timing-function: ease-in;
+  /* color: white; */
+}
+
+@keyframes textAnimIn {
+  0% {
+    transform: translateY(0);
+    color: rgb(124, 119, 119);
+  }
+  40% {
+    transform: translateY(-8px);
+    opacity: 0;
+    color: rgb(124, 119, 119);
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0;
+    color: white;
+  }
+  70% {
+    transform: translateY(0px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

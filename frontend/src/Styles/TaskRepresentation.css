@@ -1,0 +1,25 @@
+.task_main {
+  border: 0px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tblDivs {
+  border: 2px solid white;
+  color: rgb(250, 160, 181);
+  border-radius: 0;
+  max-height: 225px;
+  background-color: rgb(46, 35, 65);
+}
+
+.listViewInner {
+  border: 0px solid red;
+  height: 140px;
+  overflow-y: auto;
+}
+
+.areaSetter {
+  width: 80%;
+}

@@ -1,0 +1,11 @@
+# Ignore node_modules directory
+frontend/node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore environment-all-specific files
+.env
+
+# Ignore py_cache files
+__pycache__/
