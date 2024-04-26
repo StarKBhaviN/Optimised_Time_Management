@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.bc7e401f.css",
-    "main.js": "/static/js/main.1d279e13.js",
-    "static/media/wallpapaer.jpg": "/static/media/wallpapaer.b7e459421ce99ad3aee3.jpg",
-    "static/media/Clock.png": "/static/media/Clock.e52e2a7260fb6fa44410.png",
-    "static/media/Hourglass.png": "/static/media/Hourglass.9b66d23375b43ee3de4d.png",
-    "static/media/Stopwatch.png": "/static/media/Stopwatch.0a5c4015d84a166cc8be.png",
-    "static/media/Calender.png": "/static/media/Calender.a2c920a992e08166e8cc.png",
-    "index.html": "/index.html",
-    "main.bc7e401f.css.map": "/static/css/main.bc7e401f.css.map",
-    "main.1d279e13.js.map": "/static/js/main.1d279e13.js.map"
+    "main.css": "/Optimised_Time_Management/static/css/main.77a0b046.css",
+    "main.js": "/Optimised_Time_Management/static/js/main.fb6b5ebf.js",
+    "static/media/wallpapaer.jpg": "/Optimised_Time_Management/static/media/wallpapaer.b7e459421ce99ad3aee3.jpg",
+    "static/media/Clock.png": "/Optimised_Time_Management/static/media/Clock.e52e2a7260fb6fa44410.png",
+    "static/media/Hourglass.png": "/Optimised_Time_Management/static/media/Hourglass.9b66d23375b43ee3de4d.png",
+    "static/media/Stopwatch.png": "/Optimised_Time_Management/static/media/Stopwatch.0a5c4015d84a166cc8be.png",
+    "static/media/Calender.png": "/Optimised_Time_Management/static/media/Calender.a2c920a992e08166e8cc.png",
+    "index.html": "/Optimised_Time_Management/index.html",
+    "main.77a0b046.css.map": "/Optimised_Time_Management/static/css/main.77a0b046.css.map",
+    "main.fb6b5ebf.js.map": "/Optimised_Time_Management/static/js/main.fb6b5ebf.js.map"
   },
   "entrypoints": [
-    "static/css/main.bc7e401f.css",
-    "static/js/main.1d279e13.js"
+    "static/css/main.77a0b046.css",
+    "static/js/main.fb6b5ebf.js"
   ]
 }
