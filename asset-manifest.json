@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bc7e401f.css",
+    "main.js": "/static/js/main.1d279e13.js",
+    "static/media/wallpapaer.jpg": "/static/media/wallpapaer.b7e459421ce99ad3aee3.jpg",
+    "static/media/Clock.png": "/static/media/Clock.e52e2a7260fb6fa44410.png",
+    "static/media/Hourglass.png": "/static/media/Hourglass.9b66d23375b43ee3de4d.png",
+    "static/media/Stopwatch.png": "/static/media/Stopwatch.0a5c4015d84a166cc8be.png",
+    "static/media/Calender.png": "/static/media/Calender.a2c920a992e08166e8cc.png",
+    "index.html": "/index.html",
+    "main.bc7e401f.css.map": "/static/css/main.bc7e401f.css.map",
+    "main.1d279e13.js.map": "/static/js/main.1d279e13.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bc7e401f.css",
+    "static/js/main.1d279e13.js"
+  ]
+}
