@@ -65,7 +65,7 @@ function Navbar({ a_token, auth_token_id }) {
           >
             About
           </a>
-          <div className="btnSetNav" style={{ border: "0px solid red" }}>
+          <div className="btnSetNav">
             <div className="setBtnNav cmnBtn btnSignIn me-4">
               <button
                 className="clsSignIn innerLink animApply animNavText"

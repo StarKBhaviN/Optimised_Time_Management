@@ -248,6 +248,7 @@ function TaskAddView({ auth_token_id }) {
             Your ToDo's
           </h2>
           <div
+            className="taskOuter"
             style={{
               display: "flex",
               justifyContent: "space-between",
@@ -261,7 +262,7 @@ function TaskAddView({ auth_token_id }) {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "flex-start",
-                  position: "sticky",
+                  position: "sticky"
                 }}
               >
                 <Button

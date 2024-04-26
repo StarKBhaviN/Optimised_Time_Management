@@ -108,3 +108,23 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
+@media (width <= 1250px) {
+  .quads {
+    flex-wrap: wrap;
+    margin: 20px 0px;
+  }
+  
+  .quad {
+    margin: 8px;
+  }
+  
+  .card-outer{
+    margin: 0px 0px 20px 0px;
+  }
+    
+  .all-cards {
+    flex-wrap: wrap;
+  }
+  
+}

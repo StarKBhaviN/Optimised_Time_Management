@@ -23,3 +23,21 @@
 .areaSetter {
   width: 80%;
 }
+
+@media (width<=1250px) {
+  
+  .tblDivs {
+    font-size: 12px;
+    border: 2px solid black;
+    color: rgb(250, 160, 181);
+  }
+
+  .areaSetter {
+    border: 0px solid green;
+    width: 100%;
+  }
+
+  .quadInfo {
+    display: none;
+  }
+}

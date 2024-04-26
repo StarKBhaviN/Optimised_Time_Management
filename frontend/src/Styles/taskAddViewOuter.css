@@ -18,7 +18,7 @@
 }
 
 .btnAddTask {
-  border: 2px solid red;
+  border: 0px solid red;
 }
 
 .tasks {
@@ -35,6 +35,17 @@
   background-color: rgb(46, 35, 65);
   box-shadow: 2px 2px 4px rgb(23, 2, 74);
 }
+
+@media (width <= 1250px) {
+  .taskOuter{
+    flex-wrap: wrap;
+  }
+
+  .tasks{
+    margin-bottom: 12px;
+  }
+}
+
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -148,3 +159,5 @@
   border: 0px solid green;
   width: 210px;
 }
+
+

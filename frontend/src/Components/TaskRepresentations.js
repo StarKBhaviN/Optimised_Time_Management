@@ -33,7 +33,7 @@ function TaskRepresentations({ taskData }) {
                 </td>
                 <td style={{ padding: "0px" }}>
                   <div className="urg_imp tblDivs">
-                    <p className="pt-2" style={{ color: "rgb(208, 238, 171)" }}>
+                    <p className="quadInfo pt-2" style={{ color: "rgb(208, 238, 171)" }}>
                       Quadrant #1:
                       <br />
                       Necessity Key Action: Manage Common Activities:
@@ -122,7 +122,7 @@ function TaskRepresentations({ taskData }) {
                 </td>
                 <td style={{ padding: "0px" }}>
                   <div className="nurg_imp tblDivs">
-                    <p className="pt-2" style={{ color: "rgb(208, 238, 171)" }}>
+                    <p className="quadInfo pt-2" style={{ color: "rgb(208, 238, 171)" }}>
                       Quadrant #2:
                       <br />
                       Quality Time Key Action: Focus
@@ -222,7 +222,7 @@ function TaskRepresentations({ taskData }) {
                 </td>
                 <td style={{ padding: "0px" }}>
                   <div className="urg_nimp tblDivs">
-                    <p className="pt-2" style={{ color: "rgb(208, 238, 171)" }}>
+                    <p className="quadInfo pt-2" style={{ color: "rgb(208, 238, 171)" }}>
                       Quadrant #3:
                       <br />
                       Deception Key Action: Caution
@@ -312,7 +312,7 @@ function TaskRepresentations({ taskData }) {
                 </td>
                 <td style={{ padding: "0px" }}>
                   <div className="urg_nimp tblDivs">
-                    <p className="pt-2" style={{ color: "rgb(208, 238, 171)" }}>
+                    <p className="quadInfo pt-2" style={{ color: "rgb(208, 238, 171)" }}>
                       Quadrant #4:
                       <br />
                       Waste Key Action: Avoid
