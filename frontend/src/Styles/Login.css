@@ -68,11 +68,11 @@
   padding-top: 12px;
 }
 
-.input-box input:focus ~ label,
-.input-box input:valid ~ label {
-  top: 10px;
-  font-size: 14px;
-  color: rgb(139, 139, 139);
+.input-box input:focus~label,
+.input-box input:valid~label{
+    top:10px;
+    font-size: 14px;
+    color: rgb(139, 139, 139);
 }
 
 .input-box input:hover {
