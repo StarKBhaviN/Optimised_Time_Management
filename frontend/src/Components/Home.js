@@ -23,14 +23,14 @@ function Home() {
   }, []);
 
   return (
-    <>
+    <div>
       {/* Calling all the componenets in Home */}
       <Navbar a_token={token} auth_token_id={authToken} motion={motion} />
       <Intro a_token={token} auth_token_id={authToken} motion={motion} />
       <About a_token={token} auth_token_id={authToken} motion={motion} />
       <TaskAddView a_token={token} auth_token_id={authToken} motion={motion} />
       <DayScheduler ></DayScheduler>
-    </>
+    </div>
   )
 }
 

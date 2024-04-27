@@ -15,7 +15,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route exact path="Optimised_Time_Management/" Component={Home} />
+          <Route path="/Optimised_Time_Management/" Component={Home} />
           <Route path="/login" Component={Login} />
           <Route path="/SignUp" Component={Signup} />
         </Routes>
