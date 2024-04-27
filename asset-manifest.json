@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Optimised_Time_Management/static/css/main.77a0b046.css",
-    "main.js": "/Optimised_Time_Management/static/js/main.f1fce832.js",
+    "main.js": "/Optimised_Time_Management/static/js/main.ce732827.js",
     "static/media/wallpapaer.jpg": "/Optimised_Time_Management/static/media/wallpapaer.b7e459421ce99ad3aee3.jpg",
     "static/media/Clock_abt.png": "/Optimised_Time_Management/static/media/Clock_abt.e52e2a7260fb6fa44410.png",
     "static/media/Hourglass.png": "/Optimised_Time_Management/static/media/Hourglass.9b66d23375b43ee3de4d.png",
@@ -9,10 +9,10 @@
     "static/media/Calender.png": "/Optimised_Time_Management/static/media/Calender.a2c920a992e08166e8cc.png",
     "index.html": "/Optimised_Time_Management/index.html",
     "main.77a0b046.css.map": "/Optimised_Time_Management/static/css/main.77a0b046.css.map",
-    "main.f1fce832.js.map": "/Optimised_Time_Management/static/js/main.f1fce832.js.map"
+    "main.ce732827.js.map": "/Optimised_Time_Management/static/js/main.ce732827.js.map"
   },
   "entrypoints": [
     "static/css/main.77a0b046.css",
-    "static/js/main.f1fce832.js"
+    "static/js/main.ce732827.js"
   ]
 }
